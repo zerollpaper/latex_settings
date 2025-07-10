@@ -1,0 +1,71 @@
+{
+    // ---------- Language ----------
+    "[latex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+    "[bibtex]": {
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+    // ---------- LaTeX Workshop ----------
+    // 使用パッケージのコマンドや環境の補完を有効にする
+    "latex-workshop.intellisense.package.enabled": true,
+    // 生成ファイルを "./build" ディレクトリに吐き出す
+    "latex-workshop.latex.outDir": "./build",
+    // Saveと同時にビルドを実行する　 onSave or never
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.recipe.default": "latexmk (lualatex + bibtex)",
+    //補助配流を自動的に削除
+    "latex-workshop.latex.autoClean.run": "never",
+    // ビルドのレシピ
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (lualatex + bibtex)",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    // ビルドのレシピに使われるパーツ
+    "latex-workshop.latex.tools": [
+{
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-halt-on-error",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 0,
+    "editor.wordWrap": "on",
+    "explorer.confirmDelete": false,
+    "editor.minimap.enabled": false,
+    "hediet.vscode-drawio.resizeImages": null,
+    "hediet.vscode-drawio.theme": "kennedy",
+    "workbench.colorTheme": "One Dark Pro Monokai Darker",
+    "MATLAB.installPath": "/Applications/MATLAB_R2024b.app",
+    "terminal.integrated.commandsToSkipShell": [
+        "matlab.interrupt"
+    ],
+"files.exclude": {
+  "**/*.aux": true,
+  "**/*.bbl": true,
+  "**/*.blg": true,
+  "**/*.fls": true,
+  "**/*.fdb_latexmk": true,
+  "**/*.synctex.gz": true,
+  "**/*.log": true
+}
+}

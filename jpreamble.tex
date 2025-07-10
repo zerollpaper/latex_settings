@@ -1,0 +1,69 @@
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{luatexja-fontspec}  % LuaTeX-ja用のフォント設定
+
+% 配置'H'の使用
+\usepackage{float}
+
+% 余白
+\usepackage[top=20truemm,bottom=20truemm,left=20truemm,right=20truemm]{geometry}
+\usepackage{changepage}
+
+% 量子回路
+\usepackage{quantikz}
+
+% 数式環境
+\usepackage{amsmath,amssymb}
+% ベクトル
+\usepackage{bm,bbm}
+% braket記法
+\usepackage{braket}
+% 微分演算子
+\usepackage{fixdif,derivative}
+
+% physics2
+\usepackage{physics2}
+\usephysicsmodule{ab}   % 括弧サイズの自動調整
+\usephysicsmodule{diagmat}  % 対角行列
+\usephysicsmodule[showleft=2,showtop=2]{xmat}   % nm行列
+% physics2 END
+
+% 化学式
+\usepackage[version=4]{mhchem}
+% SI単位系
+\usepackage{siunitx}
+
+% new command
+% Landau記号
+\newcommand{\order}[1]{\mathcal{O}\ab(#1)}
+% 勾配・発散・回転
+% 勾配
+\DeclareMathOperator{\grad}{\nabla}
+% 発散
+\DeclareMathOperator{\divergence}{\nabla\cdot}
+% \divが「÷」と競合するため再定義, 「÷」は \divisionsymbolで表記する
+\let\divisionsymbol\div 
+\renewcommand{\div}{\divergence}
+% 回転
+\DeclareMathOperator{\rot}{\nabla\times}
+% 勾配・発散・回転 END
+% 実部
+\renewcommand{\Re}{\operatorname{Re}}
+% 虚部
+\renewcommand{\Im}{\operatorname{Im}}
+% トレース
+\newcommand{\Tr}{\operatorname{Tr}}
+% rank
+\newcommand{\rank}{\operatorname{rank}}
+% new command END
+
+% 表
+\usepackage{multirow}
+% 表の太線
+\newcommand{\bhline}{\noalign{\hrule height 1pt}}
+\newcommand{\bvline}{\vrule width 1pt}
+
+% 画像
+\usepackage[colorlinks=true, allcolors=violet]{hyperref}
+\usepackage{bookmark}
+\usepackage{graphicx}

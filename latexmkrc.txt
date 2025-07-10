@@ -1,0 +1,42 @@
+#!/usr/bin/env perl
+
+use v5.10;
+use experimental qw(smartmatch);
+
+# tex options
+$lualatex     = 'lualatex -shell-escape -synctex=1 -interaction=nonstopmode';
+$pdflualatex  = $lualatex;
+$biber        = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B';
+$bibtex       = 'bibtex %O %B';
+$makeindex    = 'mendex %O -o %D %S';
+$max_repeat   = 5;
+$pdf_mode     = 4;
+$bibtex_use   = 1;
+
+$pvc_view_file_via_temporary = 0;
+
+# default preview
+if    ($^O =~ /MSWin32/) { 
+    $pdf_previewer = 'start';
+}
+elsif ($^O =~ /darwin/)   {
+    $pdf_previewer = 'open';
+}
+else                      {
+    $pdf_previewer = 'evince';
+}
+
+# local config
+$local_latexmkrc_path = './.latexmkrc.local';
+require $local_latexmkrc_path if -e $local_latexmkrc_path;
+
+use File::Path qw(make_path);
+my $outdir = 'build';
+unless (-d $outdir) {
+    make_path($outdir) or die "Cannot create build directory: $!";
+}
+$out_dir = $outdir;
+$aux_dir = $outdir;
+
+# clean up
+$clean_full_ext = "%R.synctex.gz"
