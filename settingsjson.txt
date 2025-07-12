@@ -67,5 +67,8 @@
   "**/*.fdb_latexmk": true,
   "**/*.synctex.gz": true,
   "**/*.log": true
-}
+},
+"explorer.confirmDragAndDrop": false,
+"git.autofetch": true,
+"markdown-preview-enhanced.previewTheme": "github-dark.css"
 }
