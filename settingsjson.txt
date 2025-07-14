@@ -45,30 +45,33 @@
         }
     ],
     "latex-workshop.latex.clean.subfolder.enabled": true,
-    "editor.inlineSuggest.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "workbench.iconTheme": "material-icon-theme",
+// ---------- Editor General Settings ----------
+    "editor.inlineSuggest.enabled": true,
     "window.zoomLevel": 0,
     "editor.wordWrap": "on",
     "explorer.confirmDelete": false,
     "editor.minimap.enabled": false,
+// ---------- File Exclusions & Explorer Settings ----------
+    "files.exclude": {
+      "**/*.aux": true,
+      "**/*.bbl": true,
+      "**/*.blg": true,
+      "**/*.fls": true,
+      "**/*.fdb_latexmk": true,
+      "**/*.synctex.gz": true,
+      "**/*.log": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+// ---------- Extension Settings ----------
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "workbench.colorTheme": "One Dark Pro Monokai Darker",
+    "workbench.iconTheme": "material-icon-theme",
     "hediet.vscode-drawio.resizeImages": null,
     "hediet.vscode-drawio.theme": "kennedy",
-    "workbench.colorTheme": "One Dark Pro Monokai Darker",
-    "MATLAB.installPath": "/Applications/MATLAB_R2024b.app",
+    "MATLAB.installPath": "/Applications/MATLAB_R2025a.app",
     "terminal.integrated.commandsToSkipShell": [
         "matlab.interrupt"
-    ],
-"files.exclude": {
-  "**/*.aux": true,
-  "**/*.bbl": true,
-  "**/*.blg": true,
-  "**/*.fls": true,
-  "**/*.fdb_latexmk": true,
-  "**/*.synctex.gz": true,
-  "**/*.log": true
-},
-"explorer.confirmDragAndDrop": false,
-"git.autofetch": true,
-"markdown-preview-enhanced.previewTheme": "github-dark.css"
+    ]
 }
