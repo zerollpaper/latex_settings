@@ -1,0 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sn-code}[2026/4/22 v1.0 Code listing Configuration]
+
+\RequirePackage{listings}
+\renewcommand{\lstlistingname}{Code}
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\small\itshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0em,
+  xleftmargin=3em,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1em,
+  lineskip=-0.5ex
+}

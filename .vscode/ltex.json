@@ -1,0 +1,7 @@
+{
+  "ltex.dictionary": {
+    "en-US": [
+      ":/path/to/dict.txt"
+    ]
+  }
+}

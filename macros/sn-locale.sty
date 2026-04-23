@@ -1,0 +1,142 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sn-locale}[2026/04/22 v1.0 Locale Configuration (Safe Mode)]
+
+\RequirePackage{iftex}
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+
+\SetupKeyvalOptions{family=snlocale,prefix=sn@locale@}
+\DeclareStringOption[auto]{lang}
+\ProcessKeyvalOptions*
+
+% ==========================================
+% 1. Define locale-specific settings
+% ==========================================
+
+% --- Japanese settings ---
+\newcommand{\sn@locale@apply@ja}{%
+    % 1-1. amsthm 依存の設定
+    \@ifpackageloaded{amsthm}{%
+        \theoremstyle{definition}
+        \newtheorem{theorem}{定理}
+        \newtheorem{lemma}{補題}
+        \newtheorem{proposition}{命題}
+        \newtheorem{corollary}{系}
+        \newtheorem{assumption}{仮定}
+        \newtheorem{conjecture}{予想}
+        \newtheorem{definition}{定義}
+        \newtheorem{remark}{注}
+
+        \renewcommand{\proofname}{\textbf{証明}}
+        \renewenvironment{proof}[1][\proofname]{\par
+            \pushQED{\qed}%
+            \normalfont \topsep6\p@\@plus6\p@\relax
+            \trivlist
+            \item\relax
+            {##1\@addpunct{.}}\hspace\labelsep\ignorespaces
+        }{%
+            \popQED\endtrivlist\@endpefalse
+        }
+    }{}%
+
+    % 1-2. cleveref 依存の設定
+    \@ifpackageloaded{cleveref}{%
+        \crefname{theorem}{定理}{定理}
+        \crefname{lemma}{補題}{補題}
+        \crefname{proposition}{命題}{命題}
+        \crefname{corollary}{系}{系}
+        \crefname{assumption}{仮定}{仮定}
+        \crefname{conjecture}{予想}{予想}
+        \crefname{definition}{定義}{定義}
+        \crefname{remark}{注}{注}
+        \crefname{figure}{図}{図}
+        \crefname{table}{表}{表}
+        \crefname{equation}{式}{式}
+        \crefname{algorithm}{アルゴリズム}{アルゴリズム}
+
+        \AtBeginDocument{%
+            \renewcommand*{\crefpairconjunction}{, }%
+            \renewcommand*{\crefmiddleconjunction}{, }%
+            \renewcommand*{\creflastconjunction}{, }%
+            \renewcommand*{\crefrangeconjunction}{〜}%
+        }%
+    }{}%
+
+    % 1-3. algorithm / algorithmic 依存の設定
+    \@ifpackageloaded{algorithm}{\floatname{algorithm}{アルゴリズム}}{}%
+    \@ifpackageloaded{algorithmic}{%
+        \renewcommand{\algorithmicrequire}{\textbf{入力:}}%
+        \renewcommand{\algorithmicensure}{\textbf{出力:}}%
+    }{}%
+}
+
+% --- English settings ---
+\newcommand{\sn@locale@apply@en}{%
+    % 2-1. amsthm 依存
+    \@ifpackageloaded{amsthm}{%
+        \theoremstyle{definition}
+        \newtheorem{theorem}{Theorem}
+        \newtheorem{lemma}{Lemma}
+        \newtheorem{proposition}{Proposition}
+        \newtheorem{corollary}{Corollary}
+        \newtheorem{assumption}{Assumption}
+        \newtheorem{conjecture}{Conjecture}
+        \newtheorem{definition}{Definition}
+        \newtheorem{remark}{Remark}
+    }{}%
+
+    % 2-2. cleveref 依存
+    \@ifpackageloaded{cleveref}{%
+        \crefname{theorem}{Theorem}{Theorems}
+        \crefname{lemma}{Lemma}{Lemmas}
+        \crefname{proposition}{Proposition}{Propositions}
+        \crefname{corollary}{Corollary}{Corollaries}
+        \crefname{assumption}{Assumption}{Assumptions}
+        \crefname{conjecture}{Conjecture}{Conjectures}
+        \crefname{definition}{Definition}{Definitions}
+        \crefname{remark}{Remark}{Remarks}
+        \crefname{algorithm}{Algorithm}{Algorithms}
+    }{}%
+
+    % 2-3. algorithm / algorithmic 依存
+    \@ifpackageloaded{algorithm}{\floatname{algorithm}{Algorithm}}{}%
+    \@ifpackageloaded{algorithmic}{%
+        \renewcommand{\algorithmicrequire}{\textbf{Input:}}%
+        \renewcommand{\algorithmicensure}{\textbf{Output:}}%
+    }{}%
+}
+
+% ==========================================
+% 2. Judge and apply settings based on lang option
+% ==========================================
+\newcommand{\sn@locale@apply@auto}{%
+  \ifLuaTeX
+    \ifcsname ver@luatexja.sty\endcsname
+      \sn@locale@apply@ja
+    \else
+      \sn@locale@apply@en
+    \fi
+  \else
+    \ifupTeX
+      \sn@locale@apply@ja
+    \else
+      \sn@locale@apply@en
+    \fi
+  \fi
+}
+
+\ifdefstring{\sn@locale@lang}{ja}{%
+  \sn@locale@apply@ja
+}{%
+  \ifdefstring{\sn@locale@lang}{en}{%
+    \sn@locale@apply@en
+  }{%
+    \ifdefstring{\sn@locale@lang}{auto}{%
+    }{%
+      \PackageWarning{sn-locale}{Unknown lang option '\sn@locale@lang'. Fallback to auto}%
+    }%
+    \sn@locale@apply@auto
+  }%
+}
+
+\endinput
