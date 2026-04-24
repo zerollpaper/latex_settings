@@ -5,6 +5,8 @@
 文法・綴りチェッカー **LTeX** のための基本的な設定も含まれています。  
 既存の `cls` や `sty` などにより体裁が決まっている文書にも柔軟に対応できます。  
 
+まずは以下を実行します。
+
 ```bash
 git clone git@github.com:zerollpaper/latex_settings.git my-latex-project
 cd my-latex-project
