@@ -5,6 +5,15 @@
 文法・綴りチェッカー **LTeX** のための基本的な設定も含まれています。  
 既存の `cls` や `sty` などにより体裁が決まっている文書にも柔軟に対応できます。  
 
+## リポジトリの取得とテンプレート化
+この設定を雛形として使う場合は、以下のように clone した後に `.git` を削除してください。
+
+```bash
+git clone git@github.com:zerollpaper/latex_settings.git my-latex-project
+cd my-latex-project
+rm -rf .git
+```
+
 ## ファイルの構成
 ```txt
 latex_settings
