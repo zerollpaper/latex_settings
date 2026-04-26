@@ -1,0 +1,178 @@
+{
+    // ==============================
+    //  Language Specific
+    // ==============================
+    "[latex]": {
+        // enable snippets suggestions with other suggestions
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // indent width: 4 space → 2 space 
+        "editor.tabSize": 2
+    },
+    "[bibtex]": {
+        // indent width: 4 space → 2 space
+        "editor.tabSize": 2
+    },
+    // ==============================
+    //  LaTeX Workshop
+    // ==============================
+    // build and view
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.outDir": "./build",
+    "latex-workshop.view.pdf.viewer": "tab",
+    // recipes and tools
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (LuaLaTeX)",
+            "tools": ["latexmk-lualatex"]
+        },
+        {
+            "name": "latexmk (pdfLaTeX)",
+            "tools": ["latexmk-pdflatex"]
+        },
+        {
+            "name": "latexmk (upLaTeX)",
+            "tools": ["latexmk-uplatex"]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk-lualatex",
+            "command": "latexmk",
+            "args": [
+                "-pdflua",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk-pdflatex",
+            "command": "latexmk",
+            "args": [
+                "-pdf",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk-uplatex",
+            "command": "latexmk",
+            "args": [
+                "-pdfdvi",
+                "%DOC%"
+            ]
+        }
+    ],
+    // cleaning
+    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    // ==============================
+    //  LTeX (Grammar / Spell Checker)
+    // ==============================
+    "ltex.language": "en-US",
+    "ltex.enabled": ["latex", "bibtex", "markdown"],
+    "ltex.latex.commands": {
+        "cite": "ignore",
+        "citet": "ignore",
+        "citep": "ignore",
+        "ref": "ignore",
+        "eqref": "ignore",
+        "cref": "ignore",
+        "Cref": "ignore",
+        "label": "ignore",
+        "url": "ignore",
+        "href": "ignore",
+        "footnote": "ignore",
+        "texttt": "ignore",
+        "textbf": "ignore",
+        "textit": "ignore",
+        "emph": "ignore"
+    },
+    "ltex.latex.environments": {
+        "equation": "ignore",
+        "equation*": "ignore",
+        "align": "ignore",
+        "align*": "ignore",
+        "gather": "ignore",
+        "gather*": "ignore",
+        "multline": "ignore",
+        "multline*": "ignore",
+        "cases": "ignore",
+        "split": "ignore",
+        "quantikz": "ignore"
+    },
+    "ltex.dictionary": {
+        "en-US": [
+        "firstname",
+        "lastname",
+        "qubit",
+        "qubits",
+        "ancilla",
+        "ancillas",
+        ]
+    },
+    // ==============================
+    //  Editor / General
+    // ==============================
+    "editor.inlineSuggest.enabled": true,
+    "window.zoomLevel": 0,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    // ==============================
+    //  Explorer / Git
+    // ==============================
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    // ==============================
+    //  File Exclusions
+    // ==============================
+    "files.exclude": {
+        // OS / Editor / System Junk
+        "**/.DS_Store": true,
+        "**/*~": true,
+        "**/*.swp": true,
+        "**/.tmp.drive*": true,
+        "**/*.bak": true,
+        "**/*.sav": true,
+        // LaTeX auxiliary files
+        "**/*.aux": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.log": true,
+        "**/*.out": true,
+        "**/*.synctex.gz": true,
+        "**/*.synctex(busy)": true,
+        "**/*.toc": true,
+        "**/*.lof": true,
+        "**/*.lot": true,
+        "**/*.lol": true,
+        // Bibliography
+        "**/*.bbl": true,
+        "**/*.bcf": true,
+        "**/*.blg": true,
+        "**/*.run.xml": true,
+        "**/*-SAVE-ERROR": true,
+        // Beamer
+        "**/*.nav": true,
+        "**/*.snm": true,
+        "**/*.vrb": true,
+        // Indices and Glossaries
+        "**/*.idx": true,
+        "**/*.ind": true,
+        "**/*.ilg": true,
+        "**/*.glo": true,
+        "**/*.gls": true,
+        "**/*.glg": true,
+        "**/*.ist": true,
+        "**/*.acn": true,
+        "**/*.acr": true,
+        "**/*.alg": true,
+        // Package-specific files
+        "**/_minted-*": true,
+        "**/*.pyg": true,
+        "**/*.xdy": true,
+        "**/*-eps-converted-to.pdf": true,
+        // Engine-specific files
+        "**/*.dvi": true,
+        "**/*.xdv": true
+    }
+}

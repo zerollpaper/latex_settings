@@ -1,0 +1,62 @@
+# OS / Editor / System Junk
+.DS_Store
+*~
+*.swp
+*.code-workspace
+.tmp.drive*
+*.bak
+*.sav
+
+# Build directory
+build/
+out/
+
+# LaTeX auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.lof
+*.lot
+*.lol
+
+# Bibliography
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*-SAVE-ERROR
+
+# Beamer
+*.nav
+*.snm
+*.vrb
+
+# Indices and Glossaries
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.ist
+*.acn
+*.acr
+*.alg
+
+# Package-specific files
+_minted-*/
+*.pyg
+*.xdy
+*-eps-converted-to.pdf
+
+# Engine-specific files
+*.dvi
+*.xdv
+
+# Output
+*.pdf

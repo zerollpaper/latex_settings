@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sn-links}[2026/04/22 v1.0 Links and References Configuration]
+
+\RequirePackage{iftex}
+
+\@ifpackageloaded{hyperref}{}{%
+    \PassOptionsToPackage{colorlinks=true, allcolors=violet, linktocpage}{hyperref}
+    
+    \ifupTeX
+        \PassOptionsToPackage{setpagesize=false}{hyperref}
+    \fi
+    
+    \RequirePackage{hyperref}
+}
+
+\RequirePackage{bookmark}
+
+\ifupTeX
+    \RequirePackage{pxjahyper}
+\fi
+
+\RequirePackage[capitalize]{cleveref}
+
+\endinput

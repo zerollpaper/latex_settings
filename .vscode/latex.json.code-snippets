@@ -1,0 +1,167 @@
+{
+    "Standard": {
+        "prefix": "snart",
+        "body": [
+            "\\documentclass[a4paper,11pt]{ltjsarticle}",
+            "",
+            "\\usepackage[lang=ja]{sn-preamble}",
+            "\\usepackage{sn-bib}",
+            "\\addbibresource{library.bib}",
+            "",
+            "\\begin{document}",
+            "",
+            "${1}",
+            "",
+            "",
+            "",
+            "% \\printbibliography[title={参考文献},heading=bibintoc]",
+            "",
+            "\\end{document}"
+        ],
+        "description": "標準テンプレート (sn-preambleにすべて集約済み)"
+    },
+    "Modular": {
+        "prefix": "snart-mod",
+        "body": [
+            "\\documentclass[a4paper,11pt]{article}",
+            "",
+            "% \\usepackage[top=25mm,bottom=20mm,left=20mm,right=20mm]{geometry}",
+            "\\usepackage{sn-core}",
+            "",
+            "\\usepackage{sn-links}",
+            "% \\hypersetup{hidelinks}",
+            "",
+            "\\usepackage[lang=en]{sn-locale}",
+            "",
+            "\\usepackage{sn-bib}",
+            "\\addbibresource{library.bib}",
+            "",
+            "\\begin{document}",
+            "",
+            "${1}",
+            "",
+            "",
+            "",
+            "",
+            "\\end{document}"
+        ],
+        "description": "体裁を細かく調整したい時用の分散型テンプレート"
+    },
+    "ページ番号なし":{
+        "prefix": "empty",
+        "body": [
+            "\\thispagestyle{empty}",
+            "\\clearpage",
+            "\\addtocounter{page}{-1}"
+        ],
+        "description": "ページ番号なし"
+    },
+    "画像挿入":{
+        "prefix": "figure",
+        "body" : [
+            "\\begin{figure}[H]",
+            "   \\centering",
+            "   \\includegraphics[keepaspectratio,width=.9\\textwidth]{${1}}",
+            "   \\caption{${2}}",
+            "   \\label{fig:${3}}",
+            "\\end{figure}"
+        ],
+        "description": "画像挿入"
+    },
+    "表挿入":{
+        "prefix": "table",
+        "body": [
+            "\\begin{table}[H]",
+            "   \\caption{${1}}",
+            "   \\label{tab:${2}}",
+            "   \\centering",
+            "   \\begin{tabular}{${3:ccc}}",
+            "       \\bhline",
+            "        ${4} &  &  \\\\\\\\",
+            "       \\hline",
+            "         &  &  \\\\\\\\",
+            "         &  &  \\\\\\\\",
+            "         &  &  \\\\\\\\",
+            "       \\bhline",
+            "   \\end{tabular}",
+            "\\end{table}"
+        ],
+        "description": "表挿入"
+    },
+    "minipage":{
+        "prefix": "minipage",
+        "body": [
+            "\\begin{figure}[H]",
+            "   \\centering",
+            "   \\begin{minipage}[b]{0.49\\columnwidth}",
+            "       \\centering",
+            "       \\includegraphics[width=\\textwidth]{${1}}",
+            "       \\caption{${2}}",
+            "       \\label{fig:${3}}",
+            "   \\end{minipage}",
+            "   \\hfill",
+            "   \\begin{minipage}[b]{0.49\\columnwidth}",
+            "       \\centering",
+            "       \\includegraphics[width=\\textwidth]{${4}}",
+            "       \\caption{${5}}",
+            "       \\label{fig:${6}}",
+            "   \\end{minipage}",
+            "\\end{figure}"
+        ],
+        "description": "2つの独立した図を横に並べる（それぞれに独立した図番号がつく）"
+    },
+    "subfigure":{
+        "prefix": "subfigure",
+        "body": [
+            "\\begin{figure}[H]",
+            "   \\centering",
+            "   \\begin{subfigure}[b]{0.49\\columnwidth}",
+            "       \\centering",
+            "       \\includegraphics[width=\\textwidth]{${1}}",
+            "       \\caption{${2}}",
+            "       \\label{fig:${3}}",
+            "   \\end{subfigure}",
+            "   \\hfill",
+            "   \\begin{subfigure}[b]{0.49\\columnwidth}",
+            "       \\centering",
+            "       \\includegraphics[width=\\textwidth]{${4}}",
+            "       \\caption{${5}}",
+            "       \\label{fig:${6}}",
+            "   \\end{subfigure}",
+            "   \\caption{${7}}",
+            "   \\label{fig:${8}}",
+            "\\end{figure}"
+        ],
+        "description": "1つの図の中に(a)(b)を横並びにする（図1(a), 1(b)として参照可能）"
+    },
+    "量子回路挿入":{
+        "prefix": "quantikz",
+        "body": [
+            "\\begin{figure}[H]",
+            "   \\centering",
+            "   \\begin{quantikz}[thin lines]",
+            "       \\lstick{$\\ket{0}$} & ${1} & \\qw  \\\\\\\\",
+            "       \\lstick{\\makebox[2em][l]{$\\ket{0}$}} & ${2} & \\qw",
+            "   \\end{quantikz}",
+            "   \\caption{${3}}",
+            "   \\label{qc:${4}}",
+            "\\end{figure}"
+        ],
+        "description": "quantum circuit"
+    },
+    "コード挿入":{
+        "prefix": "codeinsert",
+        "body": [
+            "\\lstinputlisting[caption = ${1},label = code:${2}]{${3:path}}"
+            ],
+        "description": "コード挿入"
+    },
+    "参考文献":{
+        "prefix": "bibtex",
+        "body": [
+            "\\bibliographystyle{plain} % jplain, plainurl",
+            "\\bibliography{library}"
+        ],
+        "description": "library.bibを参照"
+    }
+}

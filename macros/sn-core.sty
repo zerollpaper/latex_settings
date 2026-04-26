@@ -1,0 +1,91 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sn-core}[2026/04/22 v1.0 LaTeX Core Configuration]
+
+\RequirePackage{iftex}
+
+% ==========================================
+% 0. Mute harmless warnings
+% ==========================================
+\RequirePackage{silence}
+\WarningFilter{caption}{Unknown document class}
+
+% ==========================================
+% 1. Basic layout, images, tables, lists
+% ==========================================
+\RequirePackage{changepage}
+\RequirePackage{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
+\RequirePackage{multirow}
+\RequirePackage{booktabs}
+\RequirePackage{algorithm,algorithmic}
+
+% ==========================================
+% 2. Math and physics
+% ==========================================
+\RequirePackage{mathtools}
+\RequirePackage{amsthm}
+\RequirePackage{physics2}
+\usephysicsmodule{ab, diagmat, xmat}
+\RequirePackage{fixdif, derivative}
+\RequirePackage{braket}
+\RequirePackage{tikz}
+\usetikzlibrary{quantikz2}
+\RequirePackage{siunitx}
+
+% ==========================================
+% 3. Engine-specific settings
+% ==========================================
+
+\ifLuaTeX
+    % --- LuaTeX 用設定 ---
+    \ifcsname ver@luatexja.sty\endcsname
+        % LuaTeX-ja, microtype の警告を消す
+        \WarningFilter{luatexja}{LuaTeX-ja's patch}
+        \WarningFilter{microtype}{Could not parse font size}
+
+        \RequirePackage{luatexja-fontspec}
+    \else
+        \RequirePackage{fontspec}
+    \fi
+    \RequirePackage{microtype}
+    \RequirePackage[warnings-off=mathtools-colon, warnings-off=mathtools-overbracket]{unicode-math}
+    
+    \let\mrm\symrm 
+\else
+    % --- 非 LuaTeX 用設定 ---
+    \RequirePackage[T1]{fontenc}
+    \ifPDFTeX
+        \RequirePackage{microtype}
+    \fi
+
+    \let\mrm\mathrm
+\fi
+
+% ==========================================
+% 2. Shared Math Macros (エンジンを問わない数式定義)
+% ==========================================
+% \mrm を使って定義することで、Lua なら \symrm、up なら \mathrm が自動で使われます
+
+\newcommand{\e}{\mrm{e}}
+\newcommand{\ii}{\mrm{i}}
+
+\DeclareMathOperator{\grad}{\nabla}
+\DeclareMathOperator{\divergence}{\nabla\cdot}
+\let\divisionsymbol\div
+\renewcommand{\div}{\divergence}
+\DeclareMathOperator{\rot}{\nabla\times}
+
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rank}{rank}
+
+\newcommand{\bhline}{\noalign{\hrule height 1pt}}
+\newcommand{\bvline}{\vrule width 1pt}
+
+\endinput

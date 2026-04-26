@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sn-preamble}[2026/04/22 v1.0 Standard LaTeX Configuration]
+
+\RequirePackage{iftex}
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+
+\SetupKeyvalOptions{family=snpreamble,prefix=sn@preamble@}
+\DeclareStringOption[auto]{lang}
+\ProcessKeyvalOptions*
+
+\@ifpackageloaded{geometry}{}{%
+	\RequirePackage[margin=25mm]{geometry}%
+}
+
+\RequirePackage{sn-core}
+
+\ifLuaTeX
+    % LuaTeX: fontspec, unicode-math は sn-core で読み込む
+    \setmathfont{latinmodern-math.otf}
+    \setmathfont{TeX Gyre Termes Math}[range=bb]
+\else
+	% pdfTeX, upLaTeX: T1 fontenc は sn-core で読み込む
+	\RequirePackage{lmodern}
+	\RequirePackage{amssymb}
+\fi
+
+\RequirePackage{sn-links}
+
+\PassOptionsToPackage{lang=\sn@preamble@lang}{sn-locale}
+\RequirePackage{sn-locale}
+
+\endinput
